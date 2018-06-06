@@ -10,10 +10,68 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180606000339) do
+ActiveRecord::Schema.define(version: 20180606144212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.integer "property_id"
+    t.integer "property_buyer_id"
+    t.integer "dalaal_id"
+    t.integer "review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "dalaals", force: :cascade do |t|
+    t.string "full_name"
+    t.integer "age"
+    t.string "email"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "properties", force: :cascade do |t|
+    t.string "type_of_property"
+    t.integer "property_owner_id"
+    t.text "description"
+    t.integer "price"
+    t.string "country"
+    t.string "city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "property_buyers", force: :cascade do |t|
+    t.string "full_name"
+    t.integer "age"
+    t.string "email"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "property_owners", force: :cascade do |t|
+    t.string "full_name"
+    t.integer "age"
+    t.string "email"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "property_id"
+    t.integer "property_buyer_id"
+    t.integer "dalaal_id"
+    t.string "title"
+    t.text "description"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
