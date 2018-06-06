@@ -1,0 +1,2 @@
+class Dalaal < ApplicationRecord
+end
